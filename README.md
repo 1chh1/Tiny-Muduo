@@ -5,5 +5,5 @@
 ## 核心架构设计
 
 项目采用经典的 **主从Reactor** 模型 : 
-- **Main Reactor** : 只负责监听 `listenfd` ，接受新连接 `accept`，并将新连接分发给 Sub Reactor。
+- **Main Reactor** : 只负责监听 `listenfd` ，接受新连接 `accept` ，并将新连接分发给 Sub Reactor。
 - **Sub Reactor** : 每个线程维护一个独立的 `EventLoop` ，即一个独立的 `epoll` ，负责已连接 socket 的所有读写事件、超时管理等
