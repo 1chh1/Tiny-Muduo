@@ -12,7 +12,7 @@ public:
 
     explicit Timestamp(int64_t microSecondsSinceEpoch);
 
-    static Timestamp now();
+    static Timestamp now(); // 获取当前时间
 
-    std::string toString() const;
+    std::string toString() const; // 将时间转为可读格式
 };
