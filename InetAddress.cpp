@@ -27,6 +27,6 @@ std::string InetAddress::toIPPort() const
     ::inet_ntop(AF_INET, &m_addr.sin_addr, buf, sizeof(buf));
     size_t end = strlen(buf);
     uint16_t port = ntohs(m_addr.sin_port);
-    snprintf(buf + end, sizeof(buf - end), ":%u", port);
+    snprintf(buf + end, sizeof(buf) - end, ":%u", port);
     return buf;
 }
