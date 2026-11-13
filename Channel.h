@@ -137,6 +137,6 @@ private:
     EventCallBack m_closeCallBack;
     EventCallBack m_errorCallBack;
 
-    void update(); // 通知底层的 Poller 更新监听的时间列表
+    void update(); // 通知底层的 Poller 更新监听的事件列表
     void handleEventWithGuard(Timestamp receiveTime); // 事件分发执行函数
 };
