@@ -3,7 +3,7 @@
 #include "noncopyable.h"
 #include <string>
 
-//定义宏
+// 定义宏
 #define LOG_INFO(LogmsgFormat, ...) \
         do{ \
             Logger& logger = Logger::instance(); \

@@ -10,7 +10,7 @@ Timestamp Timestamp::now() // 获取当前时间
     return Timestamp(time(NULL));
 }
 
-std::string Timestamp::toString() const // 将时间转为可读格式，此函数必须设为const只读，才可以让临时对象（右值）调用
+std::string Timestamp::toString() const // 将时间转为可读格式，此函数必须设为 const 只读，才可以让临时对象（右值）调用
 {
     char buf[128] = {0};
     tm* tm_time = localtime(&m_microSecondsSinceEpoch);

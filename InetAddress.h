@@ -5,7 +5,7 @@
 #include <stdint.h>
 #include <arpa/inet.h>
 
-// 封装socket地址类型
+// 封装 socket 地址类型
 class InetAddress{
 private:
     sockaddr_in m_addr;
