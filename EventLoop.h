@@ -61,11 +61,10 @@ private:
     Timestamp m_pollReturnTime; // Poller 返回发生事件的 Channels 的时间点
     std::unique_ptr<Poller> m_poller;
 
-    int m_wakeupfd; // 主要作用，当 mainloop 获取一个新用户的 channel ，通过轮询算法选择一个 subloop ，通过该成员唤醒 subloop 处理 channel
+    int m_wakeupfd; // 主要作用，当 mainloop 获取一个新用户的 Channel ，通过轮询算法选择一个 subloop ，通过该成员唤醒 subloop 处理 Channel
     std::unique_ptr<Channel> m_wakeupChannel;
 
     ChannelList m_activeChannels;
-    Channel* m_currentActiveChannel;
 
     std::atomic_bool m_callingPendingFunctors; // 标识当前 loop 是否有需要执行的回调操作
     std::vector<Functor> m_pendingFunctors; // 存储 loop 需要执行的所有的回调操作
