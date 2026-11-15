@@ -6,7 +6,6 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <errno.h>
-#include <memory>
 
 // 防止一个线程创建多个 EventLoop
 // __thread 保证此变量在每一个线程都有一份独立的拷贝副本，不会冲突

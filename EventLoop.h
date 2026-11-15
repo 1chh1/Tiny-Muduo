@@ -59,7 +59,7 @@ private:
     const pid_t m_threadid; // 记录当前 loop 所在线程的 id
 
     Timestamp m_pollReturnTime; // Poller 返回发生事件的 Channels 的时间点
-    std::unique_ptr<Poller> m_poller;
+    std::unique_ptr<Poller> m_poller; // 创建 epoll
 
     int m_wakeupfd; // 主要作用，当 mainloop 获取一个新用户的 Channel ，通过轮询算法选择一个 subloop ，通过该成员唤醒 subloop 处理 Channel
     std::unique_ptr<Channel> m_wakeupChannel;
