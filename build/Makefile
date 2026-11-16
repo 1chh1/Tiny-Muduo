@@ -273,6 +273,30 @@ EventLoopThread.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/EventLoopThread.cpp.s
 .PHONY : EventLoopThread.cpp.s
 
+EventLoopThreadPool.o: EventLoopThreadPool.cpp.o
+.PHONY : EventLoopThreadPool.o
+
+# target to build an object file
+EventLoopThreadPool.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/EventLoopThreadPool.cpp.o
+.PHONY : EventLoopThreadPool.cpp.o
+
+EventLoopThreadPool.i: EventLoopThreadPool.cpp.i
+.PHONY : EventLoopThreadPool.i
+
+# target to preprocess a source file
+EventLoopThreadPool.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/EventLoopThreadPool.cpp.i
+.PHONY : EventLoopThreadPool.cpp.i
+
+EventLoopThreadPool.s: EventLoopThreadPool.cpp.s
+.PHONY : EventLoopThreadPool.s
+
+# target to generate assembly for a file
+EventLoopThreadPool.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/EventLoopThreadPool.cpp.s
+.PHONY : EventLoopThreadPool.cpp.s
+
 InetAddress.o: InetAddress.cpp.o
 .PHONY : InetAddress.o
 
@@ -444,6 +468,9 @@ help:
 	@echo "... EventLoopThread.o"
 	@echo "... EventLoopThread.i"
 	@echo "... EventLoopThread.s"
+	@echo "... EventLoopThreadPool.o"
+	@echo "... EventLoopThreadPool.i"
+	@echo "... EventLoopThreadPool.s"
 	@echo "... InetAddress.o"
 	@echo "... InetAddress.i"
 	@echo "... InetAddress.s"
