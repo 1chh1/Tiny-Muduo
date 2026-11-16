@@ -30,7 +30,7 @@ void EventLoopThreadPool::start(const ThreadInitCallBack& cb)
     }
 }
 
-EventLoop* EventLoopThreadPool::getNestLoop()
+EventLoop* EventLoopThreadPool::getNextLoop()
 {
     EventLoop* loop = m_baseLoop;
 
