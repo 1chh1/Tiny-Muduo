@@ -14,7 +14,7 @@ public:
     using ThreadInitCallBack = std::function<void(EventLoop*)>;
 
     EventLoopThreadPool(EventLoop* baseLoop, const std::string& nameArg);
-    ~EventLoopThreadPool() = default;
+    ~EventLoopThreadPool();
 
     void setThreadNum(int numThreads)
     {

@@ -8,6 +8,8 @@ EventLoopThreadPool::EventLoopThreadPool(EventLoop* baseLoop, const std::string&
                                                                                           m_numThreads(0), 
                                                                                           m_next(0) {}
 
+EventLoopThreadPool::~EventLoopThreadPool() = default;
+
 void EventLoopThreadPool::start(const ThreadInitCallBack& cb)
 {
     m_started = true;
