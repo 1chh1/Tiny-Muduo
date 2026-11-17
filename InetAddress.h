@@ -20,4 +20,5 @@ public:
     std::string toIPPort() const;
 
     const sockaddr_in* getSockAddr() const { return &m_addr; }
+    void setSockAddr(const sockaddr_in& addr) { m_addr = addr; }
 };
