@@ -33,7 +33,7 @@ void Socket::listen()
 int Socket::accept(InetAddress* perrAddr)
 {
     sockaddr_in addr;
-    socklen_t len;
+    socklen_t len = sizeof(addr);
     memset(&addr, 0, sizeof(addr));
     int connfd = ::accept(m_sockfd, (sockaddr*)&addr, &len);
     if(connfd >= 0)
