@@ -22,7 +22,10 @@ Acceptor::Acceptor(EventLoop* loop, const InetAddress& listenAddr, bool reusepor
                                                                                    m_listening(false)
 {
     m_acceptSocket.setReuseAddr(true);
-    m_acceptSocket.setReusePort(true);
+    if(reuseport)
+    {
+        m_acceptSocket.setReusePort(true);
+    }
     m_acceptSocket.bindAddress(listenAddr);
     m_acceptChannel.setReadCallBack(std::bind(&Acceptor::handleRead, this));
 }
@@ -35,6 +38,10 @@ Acceptor::~Acceptor()
 
 void Acceptor::listen()
 {
+    if(m_listening)
+    {
+        return;
+    }
     m_listening = true;
     m_acceptSocket.listen();
     m_acceptChannel.enableReading();

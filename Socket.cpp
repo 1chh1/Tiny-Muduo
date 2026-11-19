@@ -35,7 +35,7 @@ int Socket::accept(InetAddress* perrAddr)
     sockaddr_in addr;
     socklen_t len = sizeof(addr);
     memset(&addr, 0, sizeof(addr));
-    int connfd = ::accept(m_sockfd, (sockaddr*)&addr, &len);
+    int connfd = ::accept4(m_sockfd, (sockaddr*)&addr, &len, SOCK_NONBLOCK | SOCK_CLOEXEC);
     if(connfd >= 0)
     {
         perrAddr->setSockAddr(addr);
