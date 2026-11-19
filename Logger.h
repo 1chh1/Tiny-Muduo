@@ -5,13 +5,13 @@
 
 // 定义宏
 #define LOG_INFO(LogmsgFormat, ...) \
-        do{ \
-            Logger& logger = Logger::instance(); \
-            logger.setLogLevel(INFO); \
-            char buf[1024] = {0}; \
-            snprintf(buf, 1024, LogmsgFormat, ##__VA_ARGS__); \
-            logger.log(buf); \
-        }while(0)
+    do{ \
+        Logger& logger = Logger::instance(); \
+        logger.setLogLevel(INFO); \
+        char buf[1024] = {0}; \
+        snprintf(buf, 1024, LogmsgFormat, ##__VA_ARGS__); \
+        logger.log(buf); \
+    }while(0)
 
 #define LOG_ERROR(LogmsgFormat, ...) \
     do{ \
