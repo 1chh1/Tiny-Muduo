@@ -1,6 +1,8 @@
 #pragma once
 
-class TcpConnection{
+#include "noncopyable.h"
+
+class TcpConnection : noncopyable{
 public:
 
 private:

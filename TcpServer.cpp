@@ -16,7 +16,8 @@ TcpServer::TcpServer(EventLoop* loop, const InetAddress& listenAddr, const std::
                                                                                                             m_threadPool(new EventLoopThreadPool(loop, m_name)), 
                                                                                                             m_connectionCallBack(), 
                                                                                                             m_messageCallBack(), 
-                                                                                                            m_nextConnId(1)                                                                                                                   
+                                                                                                            m_nextConnId(1), 
+                                                                                                            m_started(0)                                                                                                               
 {
     // 当有用户连接时，会执行 TcpServer::newConnection 回调
     m_acceptor->setNewConnectionCallBack(std::bind(&TcpServer::newConnection, this, std::placeholders::_1, std::placeholders::_2));
@@ -34,9 +35,8 @@ void TcpServer::setThreadNum(int numThread)
 
 void TcpServer::start()
 {
-    if(m_started == 0)
+    if(m_started.exchange(1) == 0) // 防止一个 TcpServer 对象被 start 多次
     {
-        m_started++; // 防止一个 TcpServer 对象被 start 多次
         m_threadPool->start(m_threadInitCallBack); // 启动底层的线程池
         m_loop->runInLoop(std::bind(&Acceptor::listen, m_acceptor.get()));
     }
