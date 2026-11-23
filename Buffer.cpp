@@ -2,6 +2,7 @@
 #include <algorithm>
 #include <errno.h>
 #include <sys/uio.h>
+#include <unistd.h>
 
 void Buffer::retrieve(size_t len)
 {
@@ -69,7 +70,7 @@ ssize_t Buffer::readfd(int fd, int* savederrno)
     vec[1].iov_len = sizeof(extrabuf);
 
     const int iovcnt = (writeable < sizeof(extrabuf)) ? 2 : 1;
-    const size_t n = ::readv(fd, vec, iovcnt);
+    ssize_t n = ::readv(fd, vec, iovcnt);
     if(n < 0)
     {
         *savederrno = errno;
@@ -84,5 +85,15 @@ ssize_t Buffer::readfd(int fd, int* savederrno)
         append(extrabuf, n - writeable);
     }
 
+    return n;
+}
+
+ssize_t Buffer::writefd(int fd, int* savederrno)
+{
+    ssize_t n = ::write(fd, peek(), readableBytes());
+    if(n < 0)
+    {
+        *savederrno = errno;
+    }
     return n;
 }

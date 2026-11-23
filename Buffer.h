@@ -38,7 +38,10 @@ public:
 
     const char* beginWrite() const { return begin() + m_writeindex; }
 
-    ssize_t readfd(int fd, int* savederrno); // 从 fd 上读取数据
+    // 从 fd 上读取数据
+    ssize_t readfd(int fd, int* savederrno);
+    // 通过 fd 发送数据
+    ssize_t writefd(int fd, int* savederrno);
 
 private:
     char* begin()

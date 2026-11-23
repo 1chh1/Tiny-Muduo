@@ -1,6 +1,6 @@
 #include "TcpServer.h"
 
-EventLoop* CheckLoopNotNull(EventLoop* loop)
+static EventLoop* CheckLoopNotNull(EventLoop* loop)
 {
     if(loop == nullptr)
     {
