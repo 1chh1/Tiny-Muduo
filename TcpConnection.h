@@ -8,6 +8,7 @@
 #include <memory>
 #include <string>
 #include <atomic>
+#include <string>
 
 class Channel;
 class EventLoop;
@@ -30,7 +31,7 @@ public:
     bool disconnected() const { return m_status == kDisconnected; }
 
     // 发送数据
-    void send(const void* message, int len);
+    void send(const std::string& buf);
     // 关闭连接
     void shutdown();
 
@@ -84,6 +85,6 @@ private:
     HighWaterMarkCallBack m_highWaterMarkCallBack;
     size_t m_highWaterMark;
 
-    Buffer m_inputBuffer;
-    Buffer m_outputBuffer;
+    Buffer m_inputBuffer; // 接收数据的缓冲区
+    Buffer m_outputBuffer; // 发送数据的缓冲区
 };
