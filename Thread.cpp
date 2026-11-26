@@ -18,7 +18,7 @@ Thread::~Thread()
 {
     if(m_started && !m_joined)
     {
-        m_thread->detach(); // thread 类提供的设置分离线程的方法
+        m_thread->join(); // thread 类提供的设置分离线程的方法
     }
 }
 

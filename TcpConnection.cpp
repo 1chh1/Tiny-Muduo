@@ -35,6 +35,8 @@ TcpConnection::TcpConnection(EventLoop* loop, const std::string nameArg, int soc
     m_socket->setKeepAlive(true);
 }
 
+TcpConnection::~TcpConnection() = default;
+
 // 发送数据
 void TcpConnection::send(const std::string& buf)
 {

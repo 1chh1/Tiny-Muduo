@@ -20,7 +20,7 @@ class TcpConnection : noncopyable,
 {
 public:
     TcpConnection(EventLoop* loop, const std::string nameArg, int sockfd, const InetAddress& localAddr, const InetAddress& peerAddr);
-    ~TcpConnection() = default;
+    ~TcpConnection();
 
     EventLoop* getLoop() const { return m_loop; }
     const std::string& name() const { return m_name; }

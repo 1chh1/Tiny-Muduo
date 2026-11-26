@@ -6,6 +6,7 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <errno.h>
+#include <signal.h>
 
 // 防止一个线程创建多个 EventLoop
 // __thread 保证此变量在每一个线程都有一份独立的拷贝副本，不会冲突
@@ -13,6 +14,19 @@ __thread EventLoop* t_loopInThisThread = nullptr;
 
 // 定义默认的 Poller I/O 复用接口的超时时间
 const int kPollTimeMs = 10000;
+
+namespace{
+    class IgnoreSigPipe
+    {
+    public:
+        IgnoreSigPipe()
+        {
+            ::signal(SIGPIPE, SIG_IGN);
+        }
+    };
+
+    IgnoreSigPipe g_ignoreSigPipe;
+}
 
 // 创建 wakeupfd ，用来唤醒 subReactor 处理新来的 Channel
 int createEventfd()
